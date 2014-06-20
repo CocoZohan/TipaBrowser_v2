@@ -21,10 +21,14 @@ public class DBControlClass extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         Log.d(LOG_TAG, "--- onCreate database ---");
         // create table
-        sqLiteDatabase.execSQL("create table mytable ("
+        sqLiteDatabase.execSQL("create table session ("
                 + "id integer primary key autoincrement, "
-                + "name text, "
-                + "url text" + ");");
+                + "pic text" + ");");
+
+        sqLiteDatabase.execSQL("create table url ("
+                + "id integer primary key autoincrement, "
+                + "ref_session text, " + "url text" +
+                "foreign key(ref_session) references session(id)" + ");");
     }
 
     @Override
