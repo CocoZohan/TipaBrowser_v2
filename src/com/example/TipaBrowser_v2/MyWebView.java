@@ -11,15 +11,20 @@ import android.webkit.WebView;
 public class MyWebView extends Activity {
 
     WebView webView;
+    DBControlClass dbControlClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.webview_lyout);
 
+        dbControlClass = new DBControlClass(this);
+
         webView = (WebView) findViewById(R.id.webView);
         Uri data = getIntent().getData();
         webView.loadUrl(data.toString());
+
+
     }
 
 }
